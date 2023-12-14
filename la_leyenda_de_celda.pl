@@ -10,57 +10,57 @@ hay_palancas_duplicadas(Palancas) :-
     member((X, abajo), Palancas), !.
 
 cruzar(Mapa, Palancas, Seguro) :- 
-    cruzarPorCasos(Mapa, PalancasLimpias, Seguro),
-    limpiar(PalancasLimpias, Palancas),
+    cruzar_por_casos(Mapa, Palancas_Limpias, Seguro),
+    limpiar(Palancas_Limpias, Palancas),
     not(hay_palancas_duplicadas(Palancas)).
 
 % CASOS PARA PASILLOS
-cruzarPorCasos(pasillo(Pasillo, regular), Palancas, seguro) :-
+cruzar_por_casos(pasillo(Pasillo, regular), Palancas, seguro) :-
     pasillo_cruzable(Pasillo, Palancas, arriba).
 
-cruzarPorCasos(pasillo(Pasillo, de_cabeza), Palancas, seguro) :- 
+cruzar_por_casos(pasillo(Pasillo, de_cabeza), Palancas, seguro) :- 
     pasillo_cruzable(Pasillo, Palancas, abajo).
 
-cruzarPorCasos(pasillo(Pasillo, regular), Palancas, trampa) :- 
+cruzar_por_casos(pasillo(Pasillo, regular), Palancas, trampa) :- 
     pasillo_cruzable(Pasillo, Palancas, abajo).
 
-cruzarPorCasos(pasillo(Pasillo, de_cabeza), Palancas, trampa) :- 
+cruzar_por_casos(pasillo(Pasillo, de_cabeza), Palancas, trampa) :- 
     pasillo_cruzable(Pasillo, Palancas, arriba).
 
 
 % CASOS PARA JUNTA
-cruzarPorCasos(junta(SubMapa1, SubMapa2), Palancas, seguro) :-
-    cruzarPorCasos(SubMapa1, Palancas, seguro),
-    cruzarPorCasos(SubMapa2, Palancas, seguro).
+cruzar_por_casos(junta(Sub_Mapa_1, Sub_Mapa_2), Palancas, seguro) :-
+    cruzar_por_casos(Sub_Mapa_1, Palancas, seguro),
+    cruzar_por_casos(Sub_Mapa_2, Palancas, seguro).
 
-cruzarPorCasos(junta(SubMapa1, SubMapa2), Palancas, trampa) :-
-    cruzarPorCasos(SubMapa1, Palancas, trampa),
-    cruzarPorCasos(SubMapa2, Palancas, seguro).
+cruzar_por_casos(junta(Sub_Mapa_1, Sub_Mapa_2), Palancas, trampa) :-
+    cruzar_por_casos(Sub_Mapa_1, Palancas, trampa),
+    cruzar_por_casos(Sub_Mapa_2, Palancas, seguro).
 
-cruzarPorCasos(junta(SubMapa1, SubMapa2), Palancas, trampa) :-
-    cruzarPorCasos(SubMapa1, Palancas, seguro),
-    cruzarPorCasos(SubMapa2, Palancas, trampa).
+cruzar_por_casos(junta(Sub_Mapa_1, Sub_Mapa_2), Palancas, trampa) :-
+    cruzar_por_casos(Sub_Mapa_1, Palancas, seguro),
+    cruzar_por_casos(Sub_Mapa_2, Palancas, trampa).
 
-cruzarPorCasos(junta(SubMapa1, SubMapa2), Palancas, trampa) :-
-    cruzarPorCasos(SubMapa1, Palancas, trampa),
-    cruzarPorCasos(SubMapa2, Palancas, trampa).
+cruzar_por_casos(junta(Sub_Mapa_1, Sub_Mapa_2), Palancas, trampa) :-
+    cruzar_por_casos(Sub_Mapa_1, Palancas, trampa),
+    cruzar_por_casos(Sub_Mapa_2, Palancas, trampa).
 
 % CASOS PARA BIFURCACION    
-cruzarPorCasos(bifurcacion(SubMapa1, SubMapa2), Palancas, seguro) :-
-    cruzarPorCasos(SubMapa1, Palancas, seguro),
-    cruzarPorCasos(SubMapa2, Palancas, seguro).
+cruzar_por_casos(bifurcacion(Sub_Mapa_1, Sub_Mapa_2), Palancas, seguro) :-
+    cruzar_por_casos(Sub_Mapa_1, Palancas, seguro),
+    cruzar_por_casos(Sub_Mapa_2, Palancas, seguro).
 
-cruzarPorCasos(bifurcacion(SubMapa1, SubMapa2), Palancas, seguro) :-
-    cruzarPorCasos(SubMapa1, Palancas, seguro),
-    cruzarPorCasos(SubMapa2, Palancas, trampa).
+cruzar_por_casos(bifurcacion(Sub_Mapa_1, Sub_Mapa_2), Palancas, seguro) :-
+    cruzar_por_casos(Sub_Mapa_1, Palancas, seguro),
+    cruzar_por_casos(Sub_Mapa_2, Palancas, trampa).
 
-cruzarPorCasos(bifurcacion(SubMapa1, SubMapa2), Palancas, seguro) :-
-    cruzarPorCasos(SubMapa1, Palancas, trampa),
-    cruzarPorCasos(SubMapa2, Palancas, seguro).
+cruzar_por_casos(bifurcacion(Sub_Mapa_1, Sub_Mapa_2), Palancas, seguro) :-
+    cruzar_por_casos(Sub_Mapa_1, Palancas, trampa),
+    cruzar_por_casos(Sub_Mapa_2, Palancas, seguro).
 
-cruzarPorCasos(bifurcacion(SubMapa1, SubMapa2), Palancas, trampa) :-
-    cruzarPorCasos(SubMapa1, Palancas, trampa),
-    cruzarPorCasos(SubMapa2, Palancas, trampa).
+cruzar_por_casos(bifurcacion(Sub_Mapa_1, Sub_Mapa_2), Palancas, trampa) :-
+    cruzar_por_casos(Sub_Mapa_1, Palancas, trampa),
+    cruzar_por_casos(Sub_Mapa_2, Palancas, trampa).
 
 % SECCION SIEMPRE SEGURO
 
