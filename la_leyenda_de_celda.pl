@@ -61,3 +61,7 @@ cruzarPorCasos(bifurcacion(SubMapa1, SubMapa2), Palancas, seguro) :-
 cruzarPorCasos(bifurcacion(SubMapa1, SubMapa2), Palancas, trampa) :-
     cruzarPorCasos(SubMapa1, Palancas, trampa),
     cruzarPorCasos(SubMapa2, Palancas, trampa).
+
+% SECCION SIEMPRE SEGURO
+
+siempre_seguro(Mapa) :- \+(cruzar(Mapa, _, trampa)).
