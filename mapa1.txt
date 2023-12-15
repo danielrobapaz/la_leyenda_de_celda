@@ -1,0 +1,6 @@
+cruzar(
+  pasillo(a, regular),
+  [(a, arriba)],
+  Seguro
+  ).
+Seguro = seguro.
