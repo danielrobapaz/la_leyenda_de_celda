@@ -79,7 +79,7 @@ inicio :-
 menu_principal(Mapa) :-
     write('¿Qué quieres hacer con el mapa? 1. Cruzar 2. Verificar si es siempre seguro: '),
     read(Opcion),
-    (Opcion == 1 -> menu_cruzar(Mapa); siempre_seguro(Mapa)).
+    (Opcion == 1 -> menu_cruzar(Mapa); (siempre_seguro(Mapa) -> write('Este mapa siempre es seguro :)'); write('Hay peligro en este mapa, ve con cuidado Hyperlink...'))).
 
 menu_cruzar(Mapa) :-
     write('¿Quieres dar un conjunto de palancas y ver el resultado, o ver las palancas que llevan a un estado? 1. Dar conjunto de palancas 2. Dar estado final: '),
