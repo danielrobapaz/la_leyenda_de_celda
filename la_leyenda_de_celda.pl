@@ -67,12 +67,16 @@ cruzar_por_casos(bifurcacion(Sub_Mapa_1, Sub_Mapa_2), Palancas, trampa) :-
 siempre_seguro(Mapa) :- \+(cruzar(Mapa, _, trampa)).
 
 % LECTURA DE ARCHIVOS
-leer(X) :- read(MapPath), see(MapPath), read(X), seen.
+leer(X) :- 
+    write('Hey, listen! Hiperlink, rápido, ¿Dónde está el mapa?: '),
+    read(MapPath), 
+    see(MapPath), 
+    read(X), 
+    seen.
 
 % INTERACTIVIDAD CON EL USUARIO
 
 inicio :-
-    write('Hey, listen! Hiperlink, rápido, ¿Dónde está el mapa?: '),
     leer(Mapa),
     menu_principal(Mapa).
 
