@@ -77,7 +77,7 @@ inicio :-
     menu_principal(Mapa).
 
 menu_principal(Mapa) :-
-    write('¿Qué quieres hacer con el mapa? 1. Cruzar 2. Verificar si es siempre seguro: '),
+    write('¿Qué quieres hacer con el mapa? (1. Cruzar | 2. Verificar si es siempre seguro): '),
     read(Opcion),
     (Opcion == 1 -> menu_cruzar(Mapa); (siempre_seguro(Mapa) -> write('Este mapa siempre es seguro :)'); write('Hay peligro en este mapa, ve con cuidado Hyperlink...'))).
 
@@ -90,10 +90,9 @@ dar_palancas(Mapa) :-
     write('Por favor, introduce el conjunto de palancas: '),
     read(Palancas),
     cruzar(Mapa, Palancas, Resultado),
-    (Resultado == true -> write('Es seguro cruzar con estas palancas :)'); write('No es seguro cruzar, ¡Cuidado, Hyperlink! D:')).
+    (Resultado == seguro -> write('Es seguro cruzar con estas palancas :)'); write('No es seguro cruzar, ¡Cuidado, Hyperlink! D:')).
 
 ver_palancas(Mapa) :-
-    write('¿Quieres ver las palancas que llevan a un estado seguro o a una trampa? 1. Seguro 2. Trampa: '),
+    write('¿Quieres ver las palancas que llevan a un estado seguro o a una trampa? (1. Seguro | 2. Trampa): '),
     read(Opcion),
-    (Opcion == 1 -> cruzar(Mapa, P, seguro); cruzar(Mapa, P, trampa)),
-    write(P).
+    (Opcion == 1 -> (cruzar(Mapa, P, seguro), write(P), nl, fail); (cruzar(Mapa, P, trampa), write(P), nl, fail)).
