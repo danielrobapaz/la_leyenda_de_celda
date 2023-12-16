@@ -15,7 +15,7 @@ Proyecto "La Leyenda de Celda" para CI3661.
 
 `bifurcación(SubMapa1, SubMapa2)`: Es la bifurcaci ́on del camino en dos mapas. Para poder cruzar esta bifurcación, basta con poder cruzar SubMapa1 o, equivalentemente, SubMapa2.
 
-`Palancas`: ser a una lista de asociaciones (pares ordenados) de la forma `(X, Posicion)`. Donde, X es cada una de las letras que aparecen en Mapa y Posicion es la posici on de la palanca correspondiente a la letra en X, que puede ser arriba o abajo.
+`Palancas`: lista de asociaciones (pares ordenados) de la forma `(X, Posicion)`. Donde, X es cada una de las letras que aparecen en Mapa y Posicion es la posici on de la palanca correspondiente a la letra en X, que puede ser arriba o abajo.
 
 `Seguro`: `seguro` si existe alguna manera de cruzar el laberinto o `trampa` de lo contrario.
 
