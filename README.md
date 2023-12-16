@@ -1,7 +1,7 @@
-Daniel Robayo\
-Santiago Finamore\
-Jorge Correia\
-Valeria Vera
+Daniel Robayo 18-11086\
+Santiago Finamore 18-10125\
+Jorge Correia 14-10254\
+Valeria Vera 16-11233
 
 # la_leyenda_de_celda
 
